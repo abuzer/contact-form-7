@@ -15,6 +15,7 @@
 			beforeSubmit: function(arr, $form, options) {
 				$form.wpcf7ClearResponseOutput();
 				$form.find('[aria-invalid]').attr('aria-invalid', 'false');
+				$form.find(':submit').attr('disabled', 'disabled');
 				$form.find('img.ajax-loader').css({ visibility: 'visible' });
 				return true;
 			},
@@ -138,6 +139,7 @@
 		$responseOutput.attr('role', 'alert');
 
 		$.wpcf7UpdateScreenReaderResponse($form, data);
+		$form.find(':submit').removeAttr('disabled');
 	}
 
 	$.fn.wpcf7ExclusiveCheckbox = function() {
